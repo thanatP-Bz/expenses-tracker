@@ -1,13 +1,10 @@
 import React, { useContext, useReducer, createContext } from "react";
 import reducer from "./reducer";
+import { DELETE_TRANSACTION } from "./action";
+import { ADD_TRANSACTION } from "./action";
 
 const initialState = {
-  transactions: [
-    { id: 1, text: "Flower", amount: -20 },
-    { id: 2, text: "Salary", amount: 300 },
-    { id: 3, text: "Book", amount: -10 },
-    { id: 4, text: "Camera", amount: 150 },
-  ],
+  transactions: [],
 };
 
 const AppContext = createContext();
@@ -15,8 +12,20 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const deleteTransaction = (id) => {
+    dispatch({ type: DELETE_TRANSACTION, payload: id });
+  };
+
+  const addTransaction = (transaction) => {
+    dispatch({ type: ADD_TRANSACTION, payload: transaction });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider
+      value={{ ...state, deleteTransaction, addTransaction }}
+    >
+      {children}
+    </AppContext.Provider>
   );
 };
 

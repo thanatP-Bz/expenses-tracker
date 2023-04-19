@@ -1,13 +1,28 @@
 import React, { useState } from "react";
+import { useAppContext } from "../context/UseContext";
 
 const AddTransition = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
+  const { addTransaction } = useAppContext();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const newItem = {
+      id: Math.random().toString(),
+      text,
+      amount: +amount,
+    };
+
+    addTransaction(newItem);
+  };
+
   return (
     <>
       <h3>Add new transaction</h3>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
           <input
