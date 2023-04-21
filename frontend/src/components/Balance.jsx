@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppContext } from "../context/UseContext";
+import { useAppContext } from "../contexts/UseContext";
 
 const Balance = () => {
   const { transactions } = useAppContext();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAppContext } from "../context/UseContext";
+import { useAppContext } from "../contexts/UseContext";
 
 const AddTransition = () => {
   const [text, setText] = useState("");

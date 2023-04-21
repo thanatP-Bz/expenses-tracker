@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppContext } from "../context/UseContext";
+import { useAppContext } from "../contexts/UseContext";
 
 const Transaction = ({ transaction }) => {
   const { deleteTransaction } = useAppContext();
@@ -9,7 +9,7 @@ const Transaction = ({ transaction }) => {
   return (
     <>
       <li className={transaction.amount < 0 ? "minus" : "plus"}>
-        {transaction.text}
+        {transaction.expense}
         <span>
           {sign}${Math.abs(transaction.amount)}
         </span>
