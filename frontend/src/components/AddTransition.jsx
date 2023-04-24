@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useAppContext } from "../contexts/UseContext";
+import { addItemHook } from "../hooks/addItemHook";
 
 const AddTransition = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
   const { addTransaction } = useAppContext();
+  const { addItem } = addItemHook();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -16,7 +18,7 @@ const AddTransition = () => {
       amount: +amount,
     };
 
-    addTransaction(newItem);
+    addItem(newItem);
   };
 
   return (

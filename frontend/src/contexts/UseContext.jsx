@@ -24,14 +24,12 @@ const AppProvider = ({ children }) => {
     dispatch({ type: DELETE_TRANSACTION, payload: id });
   };
 
-  const addTransaction = (transaction) => {
+  /*  const addTransaction = (transaction) => {
     dispatch({ type: ADD_TRANSACTION, payload: transaction });
   };
-
+ */
   return (
-    <AppContext.Provider
-      value={{ ...state, deleteTransaction, addTransaction }}
-    >
+    <AppContext.Provider value={{ ...state, dispatch, deleteTransaction }}>
       {children}
     </AppContext.Provider>
   );

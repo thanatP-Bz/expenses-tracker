@@ -12,7 +12,8 @@ const getExpense = async (req, res) => {
 };
 
 const addExpense = async (req, res) => {
-  const createExpense = await Expense.create(req.body);
+  const { text, amount } = req.body;
+  const createExpense = await Expense.create({ text, amount });
 
   try {
     res.status(StatusCodes.CREATED).json(createExpense);
