@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const Expense = new Schema({
-  expense: String,
+  text: String,
   amount: Number,
 });
 

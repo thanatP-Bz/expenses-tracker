@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useAppContext } from "../contexts/UseContext";
 import Transaction from "./Transaction";
+import { GET_TRANSACTION } from "../contexts/action";
 
 const TransactionList = () => {
-  const { transactions } = useAppContext();
+  const { transactions, dispatch } = useAppContext();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,6 +14,8 @@ const TransactionList = () => {
       const data = response.data;
 
       if (response) {
+        dispatch({ type: GET_TRANSACTION, payload: data });
+
         //localStorage
         localStorage.setItem("item", JSON.stringify(data));
       }

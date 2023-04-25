@@ -1,24 +1,27 @@
 import React, { useState } from "react";
-import { useAppContext } from "../contexts/UseContext";
 import { addItemHook } from "../hooks/addItemHook";
 
 const AddTransition = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
-  const { addTransaction } = useAppContext();
   const { addItem } = addItemHook();
+
+  const newItem = {
+    id: Math.random().toString(),
+    text,
+    amount: +amount,
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const newItem = {
-      id: Math.random().toString(),
-      text,
-      amount: +amount,
-    };
+    if (text && amount) {
+      addItem(newItem);
+    }
 
-    addItem(newItem);
+    setText("");
+    setAmount(0);
   };
 
   return (
@@ -37,7 +40,7 @@ const AddTransition = () => {
         <div className="form-control">
           <label htmlFor="amount">
             Amount <br />
-            (negative - expense, positive - income)
+            {/*  (negative - expense, positive - income) */}
           </label>
           <input
             type="number"

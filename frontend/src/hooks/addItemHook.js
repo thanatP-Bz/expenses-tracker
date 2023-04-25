@@ -12,7 +12,6 @@ export const addItemHook = () => {
     );
 
     const data = response.data;
-    console.log(data);
 
     dispatch({ type: ADD_TRANSACTION, payload: data });
 
