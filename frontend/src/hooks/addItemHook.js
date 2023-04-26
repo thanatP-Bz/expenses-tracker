@@ -7,7 +7,7 @@ export const addItemHook = () => {
 
   const addItem = async (transaction) => {
     const response = await axios.post(
-      `http://localhost:5000/api/v1/expense/add`,
+      `https://expense-tracker-94sm.onrender.com/api/v1/expense/add`,
       transaction
     );
 

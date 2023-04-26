@@ -9,7 +9,9 @@ const TransactionList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:5000/api/v1/expense/");
+      const response = await axios.get(
+        "https://expense-tracker-94sm.onrender.com/api/v1/expense/"
+      );
 
       const data = response.data;
 

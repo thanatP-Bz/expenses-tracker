@@ -7,7 +7,7 @@ export const deleteItemHook = () => {
 
   const deleteItem = async (id) => {
     const response = await axios.delete(
-      `http://localhost:5000/api/v1/expense/${id}`
+      `https://expense-tracker-94sm.onrender.com/api/v1/expense/${id}`
     );
 
     if (response) {
